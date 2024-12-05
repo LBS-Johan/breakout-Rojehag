@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-
+    public int _timer;
     public float _speed;
     Rigidbody2D _rigidbody;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+       
         _rigidbody.velocity = new Vector2(0, -2);
+        
     }
 
     // Update is called once per frame
@@ -23,8 +25,10 @@ public class Ball : MonoBehaviour
         if (transform.position.y <= -5)
         {
             
+            transform.position = new Vector2(0, 0);
             _rigidbody.velocity = new Vector2(0, -2);
-            transform.position = new Vector2(0, -2);
+           
+
         }
     }
     
