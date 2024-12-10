@@ -41,13 +41,14 @@ public class Ball : MonoBehaviour
             
             transform.position = new Vector2(0, 0);
             _rigidbody.velocity = new Vector2(0, 0);
+            
+            currentHealth -= 1;
 
             Destroy(livesConsumer.transform.GetChild(currentHealth).gameObject);
 
             Invoke("StartMoving", _timer);
-            
 
-                currentHealth -= 1;
+
             
             if (currentHealth == 0)
             {
