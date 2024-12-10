@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
        
         _rigidbody.velocity = new Vector2(0, -2);
+        Invoke("StartMoving", _timer);
         
     }
 
@@ -21,15 +22,20 @@ public class Ball : MonoBehaviour
     void Update()
     {
         _rigidbody.velocity = _rigidbody.velocity.normalized * _speed;
+        
 
         if (transform.position.y <= -5)
         {
             
             transform.position = new Vector2(0, 0);
-            _rigidbody.velocity = new Vector2(0, -2);
-           
+            _rigidbody.velocity = new Vector2(0, 0);
+            Invoke("StartMoving", _timer);
 
         }
     }
-    
+
+    void StartMoving()
+    {
+        _rigidbody.velocity = new Vector2(0, -2);
+    }
 }
