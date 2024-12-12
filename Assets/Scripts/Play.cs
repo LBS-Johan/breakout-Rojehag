@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlaY : MonoBehaviour
 {
+    public int scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,12 @@ public class PlaY : MonoBehaviour
 
     public void play() 
     {
-        SceneManager.LoadScene(1);
+        Score.playerScore = 0;
+
+        SceneManager.LoadScene(scene);
+    }
+    public void exit()
+    {
+        Application.Quit();
     }
 }

@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
        
-        _rigidbody.velocity = new Vector2(0, -2);
+        _rigidbody.velocity = new Vector2(0, 0);
         Invoke("StartMoving", _timer);
 
         currentHealth = maxHealth;
@@ -57,6 +57,11 @@ public class Ball : MonoBehaviour
 
 
         }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void StartMoving()
@@ -64,8 +69,17 @@ public class Ball : MonoBehaviour
         _rigidbody.velocity = new Vector2(0, -2);
     }
 
+   
+
     void GameOver()
     {
         SceneManager.LoadScene(2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.gameObject.CompareTag("Ball")) return;
+
+
     }
 }
